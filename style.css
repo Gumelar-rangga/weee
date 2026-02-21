@@ -1,0 +1,312 @@
+/* ============================================
+   LOVE DEFENDER - Valentine's Day Game
+   Style Sheet
+   ============================================ */
+
+/* --- RESET & BASE STYLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #ff7eb3 100%);
+    min-height: 100vh;
+    overflow: hidden;
+    touch-action: none;
+}
+
+/* --- GAME CONTAINER --- */
+#gameContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* --- CANVAS --- */
+#gameCanvas {
+    display: block;
+    background: linear-gradient(180deg, #ffecd2 0%, #fcb69f 100%);
+}
+
+/* --- UI ELEMENTS --- */
+.ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Score Display */
+#scoreBoard {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-family: 'Bangers', cursive;
+    font-size: 28px;
+    color: #d6336c;
+    text-shadow: 2px 2px 0 #fff, 4px 4px 0 rgba(0,0,0,0.1);
+    letter-spacing: 2px;
+}
+
+#loveMeter {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-family: 'Bangers', cursive;
+    font-size: 28px;
+    color: #ff4d6d;
+    text-shadow: 2px 2px 0 #fff;
+}
+
+/* --- PLAYER CHARACTER --- */
+.player {
+    position: absolute;
+    bottom: 100px;
+    font-size: 50px;
+    transition: left 0.1s ease-out;
+    z-index: 5;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+}
+
+/* --- SCREENS --- */
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    pointer-events: auto;
+    z-index: 20;
+    padding: 20px;
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- TITLE SCREEN --- */
+#titleScreen h1 {
+    font-family: 'Bangers', cursive;
+    font-size: 48px;
+    color: #d6336c;
+    text-shadow: 3px 3px 0 #ffb3c1;
+    margin-bottom: 10px;
+    animation: bounce 0.5s ease infinite alternate;
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10px); }
+}
+
+#titleScreen .subtitle {
+    font-family: 'Fredoka One', cursive;
+    font-size: 18px;
+    color: #ff7eb3;
+    margin-bottom: 30px;
+}
+
+#titleScreen .character {
+    font-size: 80px;
+    margin-bottom: 20px;
+    animation: waddle 0.3s ease infinite alternate;
+}
+
+@keyframes waddle {
+    from { transform: rotate(-5deg); }
+    to { transform: rotate(5deg); }
+}
+
+/* --- BUTTONS --- */
+.btn {
+    font-family: 'Fredoka One', cursive;
+    font-size: 20px;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin: 10px;
+    pointer-events: auto;
+}
+
+.btn-play {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    box-shadow: 0 8px 20px rgba(255, 117, 140, 0.4);
+}
+
+.btn-play:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 12px 30px rgba(255, 117, 140, 0.6);
+}
+
+.btn-play:active {
+    transform: scale(0.95);
+}
+
+/* --- GAME OVER SCREEN --- */
+#gameOverScreen h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 42px;
+    color: #d6336c;
+    margin-bottom: 10px;
+}
+
+#finalScore {
+    font-family: 'Fredoka One', cursive;
+    font-size: 60px;
+    color: #ff4d6d;
+    margin: 20px 0;
+}
+
+#rating {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+/* --- COMEDY POPUP --- */
+.comedy-popup {
+    position: absolute;
+    font-family: 'Bangers', cursive;
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    pointer-events: none;
+    animation: popupAnim 1s ease-out forwards;
+    z-index: 15;
+    white-space: nowrap;
+}
+
+@keyframes popupAnim {
+    0% { transform: scale(0) rotate(-10deg); opacity: 1; }
+    50% { transform: scale(1.3) rotate(5deg); opacity: 1; }
+    100% { transform: scale(1) rotate(0deg) translateY(-80px); opacity: 0; }
+}
+
+/* --- HEARTS BACKGROUND --- */
+.bg-heart {
+    position: absolute;
+    font-size: 30px;
+    opacity: 0.2;
+    animation: floatBg 8s linear infinite;
+    z-index: 1;
+}
+
+@keyframes floatBg {
+    from { transform: translateY(100vh) rotate(0deg); }
+    to { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* --- MOBILE CONTROLS HINT --- */
+#mobileHint {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    pointer-events: none;
+}
+
+/* --- WIN SCREEN --- */
+#winScreen h1 {
+    font-family: 'Bangers', cursive;
+    font-size: 42px;
+    color: #d6336c;
+    margin: 20px 0;
+}
+
+/* --- MESSAGE MODAL --- */
+#messageModal {
+    background: rgba(255,255,255,0.98);
+}
+
+#loveLetter {
+    font-family: 'Nunito', sans-serif;
+    line-height: 2;
+    color: #555;
+    max-width: 350px;
+    text-align: left;
+    background: #fff5f5;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(214, 51, 108, 0.2);
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 480px) {
+    #titleScreen h1 {
+        font-size: 36px;
+    }
+    
+    #titleScreen .character {
+        font-size: 60px;
+    }
+    
+    .btn {
+        font-size: 18px;
+        padding: 12px 30px;
+    }
+    
+    #scoreBoard, #loveMeter {
+        font-size: 22px;
+    }
+    
+    .player {
+        font-size: 40px;
+        bottom: 80px;
+    }
+    
+    #mobileHint {
+        font-size: 12px;
+    }
+    
+    #finalScore {
+        font-size: 48px;
+    }
+}
+
+/* --- PARTICLE EFFECTS --- */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    animation: particleFade 0.8s ease-out forwards;
+}
+
+@keyframes particleFade {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0); opacity: 0; }
+}
+
+/* --- SCREEN SHAKE --- */
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-10px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-10px); }
+    80% { transform: translateX(10px); }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Love Defender - Game Valentine 💕</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="style.css">
+
+    
+</head>
+<body>
+
+    <!-- Game Container -->
+    <div id="gameContainer">
+        
+        <!-- Canvas untuk Game -->
+        <canvas id="gameCanvas"></canvas>
+        
+        <!-- UI Layer -->
+        <div class="ui-layer">
+            <div id="scoreBoard">💕 Skor: <span id="score">0</span></div>
+            <div id="loveMeter">❤️ Cinta: <span id="lives">5</span></div>
+            <div id="mobileHint">👆 Sentuh kiri/kanan untuk bergerak <br>
+            dibuat oleh Gumelar Rangga</div>
+        </div>
+        
+        <!-- Player Character -->
+        <div id="player" class="player">😘</div>
+        
+        <!-- Title Screen -->
+        <div id="titleScreen" class="screen">
+            <div class="character">👫</div>
+            <h1>LOVE DEFENDER</h1>
+            <p class="subtitle">Lindungi Cinta Kita dari Rival!</p>
+            <p style="font-size: 14px; color: #888; margin-bottom: 20px;">
+                Tangkap ❤️ | Hindari 💔 | Kalahkan Rival 😈
+            </p>
+            <button class="btn btn-play" onclick="startGame()">MULAI MAIN 🎮</button>
+        </div>
+        
+        <!-- Game Over Screen -->
+        <div id="gameOverScreen" class="screen hidden">
+            <h2>💔 GAME OVER 💔</h2>
+            <div id="finalScore">0</div>
+            <div id="rating">Pacarmu pasti kecewa...</div>
+            <button class="btn btn-play" onclick="restartGame()">COBA LAGI 🔄</button>
+            <button class="btn btn-play" onclick="showLoveMessage()" style="background: linear-gradient(135deg, #d6336c, #ff7eb3);">💌 Pesan Spesial</button>
+        </div>
+        
+        <!-- Win Screen -->
+        <div id="winScreen" class="screen hidden">
+            <div style="font-size: 80px; animation: bounce 0.5s ease infinite alternate;">🏆</div>
+            <h1 style="font-family: 'Bangers'; font-size: 42px; color: #d6336c; margin: 20px 0;">KAMU MENANG!</h1>
+            <p style="font-size: 18px; color: #666; margin-bottom: 20px;">
+                Kamu berhasil melindungi cinta kita! 💕
+            </p>
+            <div id="winMessage" style="font-family: 'Fredoka One'; font-size: 24px; color: #ff4d6d; margin: 20px 0;"></div>
+            <button class="btn btn-play" onclick="restartGame()">MAIN LAGI 🔄</button>
+        </div>
+        
+        <!-- Special Message Modal -->
+        <div id="messageModal" class="screen hidden" style="background: rgba(255,255,255,0.98);">
+            <div style="font-size: 60px; margin-bottom: 20px;">💕</div>
+            <h2 style="font-family: 'Bangers'; font-size: 36px; color: #d6336c; margin-bottom: 20px;">Untukmu Sayangku</h2>
+            <div id="loveLetter" style="font-family: 'Nunito'; font-size: 18px; line-height: 2; color: #555; max-width: 350px; text-align: left; background: #fff5f5; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(214, 51, 108, 0.2);">
+                <!-- Pesan akan diisi oleh JavaScript -->
+            </div>
+            <button class="btn btn-play" onclick="closeMessage()" style="margin-top: 25px;">TUTUP 💕</button>
+        </div>
+        
+    </div>
+
+    <!-- JavaScript Game Logic -->
+    <script src="game.js"></script>
+</body>
+</html>
